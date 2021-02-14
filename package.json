@@ -1,0 +1,29 @@
+{
+  "name": "vr",
+  "version": "1.0.0",
+  "description": "Testing VR player",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwardEMC/VR.git"
+  },
+  "author": "Edward Coad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdwardEMC/VR/issues"
+  },
+  "homepage": "https://github.com/EdwardEMC/VR#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.5",
+    "express-session": "^1.17.1",
+    "heroku-cli": "^7.0.9",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.0",
+    "sequelize-cli": "^6.2.0"
+  }
+}
