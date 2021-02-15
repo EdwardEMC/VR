@@ -1,3 +1,5 @@
+const express = require("express");
+
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -31,8 +33,6 @@ require("./routes/html_routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app through the server not app (due to socket.io setup)
 // =============================================================
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on http://localhost:" + PORT);
-  });
+app.listen(PORT, function() {
+console.log("App listening on http://localhost:" + PORT);
 });

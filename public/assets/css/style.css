@@ -1,0 +1,23 @@
+#fullscreen_toggle {
+  cursor: pointer;
+  position: absolute;
+  max-width: 30px;
+  max-height: 30px;
+  bottom: 10px;
+  right: 10px;
+}
+
+#options_toggle {
+  cursor: pointer;
+  position: absolute;
+  max-width: 30px;
+  max-height: 30px;
+  bottom: 10px;
+  right: 50px;
+}
+
+#vr_button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}

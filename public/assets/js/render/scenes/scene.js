@@ -20,7 +20,6 @@
 
 import {RenderView} from '../core/renderer.js';
 import {InputRenderer} from '../nodes/input-renderer.js';
-import {StatsViewer} from '../nodes/stats-viewer.js';
 import {Node} from '../core/node.js';
 import {vec3, quat} from '../math/gl-matrix.js';
 import {Ray} from '../math/ray.js';
@@ -45,9 +44,6 @@ export class Scene extends Node {
     this._statsStanding = false;
     this._stats = null;
     this._statsEnabled = false;
-    // this it the frame rate viewer
-    this.enableStats(false); // Ensure the stats are added correctly by default.
-
     this._inputRenderer = null;
     this._resetInputEndFrame = true;
 
@@ -176,33 +172,6 @@ export class Scene extends Node {
       if (hitResult) {
         // Render a cursor at the intersection point.
         hitResult.node.handleSelect();
-      }
-    }
-  }
-
-  enableStats(enable) {
-    if (enable == this._statsEnabled) {
-      return;
-    }
-
-    this._statsEnabled = enable;
-
-    if (enable) {
-      this._stats = new StatsViewer();
-      this._stats.selectable = true;
-      this.addNode(this._stats);
-
-      if (this._statsStanding) {
-        this._stats.translation = [0, 1.4, -0.75];
-      } else {
-        this._stats.translation = [0, -0.3, -0.5];
-      }
-      this._stats.scale = [0.3, 0.3, 0.3];
-      quat.fromEuler(this._stats.rotation, -45.0, 0.0, 0.0);
-    } else if (!enable) {
-      if (this._stats) {
-        this.removeNode(this._stats);
-        this._stats = null;
       }
     }
   }

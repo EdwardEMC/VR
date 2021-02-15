@@ -58,9 +58,9 @@ export class InlineViewerHelper {
         }
       });
 
-      canvas.addEventListener('mouseup', () => {
-        $("#lookYaw").click(); // trigger socket emit for students changing viewpoints
-      });
+      // canvas.addEventListener('mouseup', () => {
+      //   $("#lookYaw").click(); // trigger socket emit for students changing viewpoints
+      // });
     
       canvas.addEventListener("touchstart", (event) => {
         if (primaryTouch == undefined) {
@@ -119,7 +119,7 @@ export class InlineViewerHelper {
         this.lookPitch = Math.PI*0.5;
       }
       //set point of view values on teacher.handlebars for object placement
-      $("#lookPitch").text(this.lookPitch);
+      //$("#lookPitch").text(this.lookPitch); //save incase vr player buttons need to move up/down
       $("#lookYaw").text(this.lookYaw);
       this.dirty = true;
     }
