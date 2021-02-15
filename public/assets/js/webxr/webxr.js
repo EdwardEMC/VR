@@ -19,7 +19,6 @@ export class WebXR {
       defaultInputHandling: 'defaultInputHandling' in options ? options.defaultInputHandling : true
     };
 
-    this.account = options.account;
     this.gl = null;
     this.renderer = null;
     this.scene = new Scene();
@@ -130,8 +129,6 @@ export class WebXR {
     session.addEventListener('end', (event) => {
       this.onSessionEnded(event.session);
     });
-
-    if(this.account && window.location.pathname === "/Tour") {session.addEventListener('select', this.pointer)};
 
     // enable for button responses
     session.addEventListener('select', (event) => {
@@ -284,5 +281,35 @@ export class WebXR {
       this.options_visibility ? this.scene.removeNode(control.node) : this.scene.addNode(control.node);
     });
     this.options_visibility = !this.options_visibility;
+  }
+
+  // loading a file from local storage
+  localFileVideoPlayer(video) {
+    'use strict'
+    var URL = window.URL || window.webkitURL
+    var displayMessage = function (message, isError) {
+      var element = document.querySelector('#message')
+      element.innerHTML = message
+      element.className = isError ? 'error' : 'info'
+    }
+    var playSelectedFile = function (event) {
+      var file = this.files[0]
+      var type = file.type
+      //var videoNode = document.querySelector('video')
+      var canPlay = video.canPlayType(type)
+      if (canPlay === '') canPlay = 'no'
+      var message = 'Can play type "' + type + '": ' + canPlay
+      var isError = canPlay === 'no'
+      displayMessage(message, isError)
+  
+      if (isError) {
+        return
+      }
+  
+      var fileURL = URL.createObjectURL(file)
+      video.src = fileURL
+    }
+    var inputNode = document.querySelector('input')
+    inputNode.addEventListener('change', playSelectedFile, false)
   }
 }

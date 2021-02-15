@@ -29,6 +29,9 @@ imgFull.onclick = function() { app.toggleFullScreen() };
 let imgOptions = app.createIcon("options-button.png", "options_toggle");
 imgOptions.onclick = function() { app.toggleOptions() };
 
+// Load local video file
+app.localFileVideoPlayer(video);
+
 // Page setup
 let videoSkybox = new VideoSkybox({video: video});
 document.body.append(video, imgFull, imgOptions);
