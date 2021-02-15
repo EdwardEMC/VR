@@ -31,7 +31,7 @@ app.set("view engine", "handlebars");
 // =============================================================
 require("./routes/html_routes.js")(app);
 
-// Syncing our sequelize models and then starting our Express app through the server not app (due to socket.io setup)
+// Start the server on PORT
 // =============================================================
 app.listen(PORT, function() {
   console.log("App listening on http://localhost:" + PORT);

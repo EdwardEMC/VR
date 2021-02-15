@@ -37,6 +37,7 @@ export class WebXR {
     this.controls = [];
     this.rotation = 0;
     this.options_visibility = true;
+    this.inputNode = document.querySelector('input');
 
     this.xrButton = new WebXRButton({
       onRequestSession: () => { return this.onRequestSession(); },
@@ -244,7 +245,7 @@ export class WebXR {
 
   // toggle fullscreen mode
   toggleFullScreen() {
-    let vr_button = $('#VRButton');
+    let vr_button = $('#vr_button');
     if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
     (!document.mozFullScreen && !document.webkitIsFullScreen)) {
       vr_button.toggle();
@@ -280,36 +281,36 @@ export class WebXR {
     this.controls.forEach(control => {
       this.options_visibility ? this.scene.removeNode(control.node) : this.scene.addNode(control.node);
     });
+    this.options_visibility ? this.inputNode.style.display = "none" : this.inputNode.style.display = "block";
     this.options_visibility = !this.options_visibility;
   }
 
   // loading a file from local storage
   localFileVideoPlayer(video) {
     'use strict'
-    var URL = window.URL || window.webkitURL
-    var displayMessage = function (message, isError) {
-      var element = document.querySelector('#message')
+    let URL = window.URL || window.webkitURL
+    let displayMessage = function (message, isError) {
+      let element = document.querySelector('#message')
       element.innerHTML = message
       element.className = isError ? 'error' : 'info'
     }
-    var playSelectedFile = function (event) {
-      var file = this.files[0]
-      var type = file.type
-      //var videoNode = document.querySelector('video')
-      var canPlay = video.canPlayType(type)
+    let playSelectedFile = function (event) {
+      let file = this.files[0]
+      let type = file.type
+      //let videoNode = document.querySelector('video')
+      let canPlay = video.canPlayType(type)
       if (canPlay === '') canPlay = 'no'
-      var message = 'Can play type "' + type + '": ' + canPlay
-      var isError = canPlay === 'no'
+      let message = 'Can play type "' + type + '": ' + canPlay
+      let isError = canPlay === 'no'
       displayMessage(message, isError)
   
       if (isError) {
         return
       }
   
-      var fileURL = URL.createObjectURL(file)
+      let fileURL = URL.createObjectURL(file)
       video.src = fileURL
     }
-    var inputNode = document.querySelector('input')
-    inputNode.addEventListener('change', playSelectedFile, false)
+    this.inputNode.addEventListener('change', playSelectedFile, false)
   }
 }
