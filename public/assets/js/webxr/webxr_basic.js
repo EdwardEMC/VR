@@ -9,9 +9,6 @@ if (QueryArgs.getBool('usePolyfill', true)) {
   let polyfill = new WebXRPolyfill();
 }
 
-// WebXR setup
-let app = new WebXR({referenceSpace: 'local-floor'});
-
 // home scene video node set up
 const video = document.createElement('video');
 video.setAttribute("id", "video_360_stream");
@@ -20,7 +17,9 @@ video.style.display = "none";
 video.autoplay = true;
 video.loop = true;
 video.src = "assets/media/video/sample.mp4";
-video.load();
+
+// WebXR setup
+let app = new WebXR({referenceSpace: 'local-floor'});
 
 // Fullscreen icon
 let imgFull = app.createIcon("fullscreen.png", "fullscreen_toggle");
@@ -67,6 +66,4 @@ app.addPermissionButtons([
 app.scene.addNode(videoSkybox); //add home scene here
 
 // Start the XR application.
-video.addEventListener('loadeddata', () => {
-  app.run();
-});
+app.run();
