@@ -56,9 +56,7 @@ const assets = [
   '/assets/media/icons/icon-64x64.png',
   '/assets/media/icons/icon-128x128.png',
   '/assets/media/icons/icon-256x256.png',
-  '/assets/media/icons/icon-512x512.png',
-
-  '/assets/media/video/sample.mp4',
+  '/assets/media/icons/icon-512x512.png'
 ];
 
 // install event
