@@ -20,6 +20,7 @@ video.style.display = "none";
 video.autoplay = true;
 video.loop = true;
 video.src = "assets/media/video/sample.mp4";
+video.load();
 
 // Fullscreen icon
 let imgFull = app.createIcon("fullscreen.png", "fullscreen_toggle");
@@ -66,4 +67,6 @@ app.addPermissionButtons([
 app.scene.addNode(videoSkybox); //add home scene here
 
 // Start the XR application.
-app.run();
+video.addEventListener('loadeddata', () => {
+  app.run();
+});
