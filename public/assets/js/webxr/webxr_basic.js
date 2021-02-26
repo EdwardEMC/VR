@@ -17,6 +17,8 @@ video.style.display = "none";
 video.autoplay = true;
 video.loop = true;
 video.src = "assets/media/video/sample.mp4";
+video.preload= "auto";
+video.autoload = true;
 
 // WebXR setup
 let app = new WebXR({referenceSpace: 'local-floor'});
