@@ -17,16 +17,13 @@ video.style.display = "none";
 video.autoplay = true;
 video.loop = true;
 video.muted = true;
-video.playsInline = true;
 video.src = "assets/media/video/sample.mp4";
-video.preload= "auto";
-video.autoload = true;
 
 // WebXR setup
 let app = new WebXR({referenceSpace: 'local-floor'});
 
 // Fullscreen icon
-let imgFull = app.createIcon("fullscreen.png", "fullscreen_toggle");
+let imgFull = app.createIcon("fullscreen-button.png", "fullscreen_toggle");
 imgFull.onclick = function() { app.toggleFullScreen() };
 
 // Options icon

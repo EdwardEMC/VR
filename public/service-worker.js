@@ -46,7 +46,7 @@ const assets = [
 
   '/assets/js/app.js',
 
-  '/assets/media/buttons/fullscreen.png',
+  '/assets/media/buttons/fullscreen-button.png',
   '/assets/media/buttons/mic-button.png',
   '/assets/media/buttons/options-button.png',
   '/assets/media/buttons/pause-button.png',
