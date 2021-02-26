@@ -1,2 +1,2 @@
 # VR
-WebXR VR barebones player
+Progressive web application for an offline WebXR VR barebones player
