@@ -272,6 +272,7 @@ export class WebXR {
   createIcon(path, id) {
     let img = document.createElement("IMG");
     img.src = "/assets/media/buttons/" + path; //fullscreen.png
+    img.alt = path;
     img.setAttribute("id", id); //fullscreen_toggle
     return img;
   }

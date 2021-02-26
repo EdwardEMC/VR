@@ -16,6 +16,8 @@ video.setAttribute("class", "hide");
 video.style.display = "none";
 video.autoplay = true;
 video.loop = true;
+video.muted = true;
+video.playsInline = true;
 video.src = "assets/media/video/sample.mp4";
 video.preload= "auto";
 video.autoload = true;
