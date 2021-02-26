@@ -53,7 +53,9 @@ const assets = [
   '/assets/media/buttons/play-button.png',
   '/assets/media/buttons/restart-button.png',
 
-  '/assets/media/icons/icon-192x192.png',
+  '/assets/media/icons/icon-64x64.png',
+  '/assets/media/icons/icon-128x128.png',
+  '/assets/media/icons/icon-256x256.png',
   '/assets/media/icons/icon-512x512.png',
 
   '/assets/media/video/sample.mp4',
