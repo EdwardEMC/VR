@@ -8,10 +8,20 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "assets/media/icons/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "assets/media/icons/icon-64x64.png",
+      "sizes": "64x64",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "assets/media/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/media/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
     },
     {
       "src": "assets/media/icons/icon-512x512.png",
