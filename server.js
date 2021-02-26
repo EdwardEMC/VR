@@ -12,6 +12,14 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
+// Redirect users to https based URL
+// app.use(function(req, res, next) {
+//   if ((req.get('X-Forwarded-Proto') !== 'https')) {
+//     res.redirect('https://' + req.get('Host') + req.url);
+//   } else
+//     next();
+// });
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
