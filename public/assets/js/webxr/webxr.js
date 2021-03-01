@@ -298,7 +298,6 @@ export class WebXR {
     let playSelectedFile = function (event) {
       let file = this.files[0]
       let type = file.type
-      //let videoNode = document.querySelector('video')
       let canPlay = video.canPlayType(type)
       if (canPlay === '') canPlay = 'no'
       let message = 'Can play type "' + type + '": ' + canPlay
@@ -308,9 +307,16 @@ export class WebXR {
       if (isError) {
         return
       }
+
+      console.log(file);
   
       let fileURL = URL.createObjectURL(file)
+
       video.src = fileURL
+      
+      console.log(fileURL);
+
+      //potential work around https://stackoverflow.com/questions/21227979/load-sdcard-video-through-html5-android
     }
     this.inputNode.addEventListener('change', playSelectedFile, false)
   }
