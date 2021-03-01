@@ -310,9 +310,9 @@ export class WebXR {
 
       console.log(file);
   
-      let fileURL = URL.createObjectURL(file)
+      let fileURL = URL.createObjectURL(new Blob([file]));
 
-      video.src = fileURL
+      video.src = fileURL;
       
       console.log(fileURL);
 
