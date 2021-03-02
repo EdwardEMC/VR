@@ -15,6 +15,7 @@ clear database
 <script src="assets/js/jquery/jquery-3.4.1.js"></script>
 <script src="https://cdn.rawgit.com/localForage/localForage/4ce19202/dist/localforage.min.js"></script>
 <script>
+        const vid = document.querySelector('video');
         f.onchange = store;
 
         function store() {
@@ -25,7 +26,14 @@ clear database
 
             localforage.setItem('myfile', f.files[0]).then(_ => {
                 log.textContent = 'page will soon reload, and load this file from storage';
-                setTimeout(_ => location.reload(), 3000);
+                setTimeout(_ => {
+                    getFile().catch( err => {
+                        log.textContent = "We faced an issue:\n '" +
+                            err.message + "'\n" +
+                            (err.message.includes( 'storage method') ?
+                            'If you are on Firefox, you may have to disable "Tracking Protection" for this site.' : '');
+                    });
+                }, 3000);
             });
         }
 
@@ -37,17 +45,11 @@ clear database
             }
             clear_btn.disabled = false;
             log.textContent = 'playing stored file: ' + blob.name;
-            const vid = document.querySelector('video');
+            //const vid = document.querySelector('video');
             const buf = await blob.arrayBuffer();
             vid.src = URL.createObjectURL( new Blob( [ buf ] ) );
             return vid.play();
         }
-        getFile().catch( err => {
-            log.textContent = "We faced an issue:\n '" +
-                err.message + "'\n" +
-                (err.message.includes( 'storage method') ?
-                'If you are on Firefox, you may have to disable "Tracking Protection" for this site.' : '');
-        });
 
         clear_btn.onclick = e => {
             localforage.removeItem('myfile');
