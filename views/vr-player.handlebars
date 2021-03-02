@@ -1,6 +1,55 @@
 <div id="vr_button"></div>
-<div id="message" style="display: none;"></div>
-<input type="file" accept="video/*"/>
-<script src="assets/js/jquery/jquery-3.4.1.js"></script>
+{{!-- <div id="message" style="display: none;"></div>
+<input type="file" accept="video/*"/> --}}
+
 <script type="module" src="assets/js/webxr/webxr_basic.js"></script>
 <link rel="stylesheet" href="assets/css/XRstyle.css">
+
+<pre id="log"></pre>
+<input type="file" id="f" />
+<br><br>
+<button id="clear_btn" disabled="true">
+clear database
+</button>
+<video style="display: none;" id="video_stream" controls muted autoplay></video>
+<script src="assets/js/jquery/jquery-3.4.1.js"></script>
+<script src="https://cdn.rawgit.com/localForage/localForage/4ce19202/dist/localforage.min.js"></script>
+<script>
+        f.onchange = store;
+
+        function store() {
+            if (this.files[0].type.indexOf('video/') !== 0) {
+                log.textContent = 'Not an video file...'
+                return;
+            }
+
+            localforage.setItem('myfile', f.files[0]).then(_ => {
+                log.textContent = 'page will soon reload, and load this file from storage';
+                setTimeout(_ => location.reload(), 3000);
+            });
+        }
+
+        async function getFile() {
+            const blob = await localforage.getItem('myfile')
+            if (!blob) {
+                log.textContent = 'Please choose a video file to be stored.'
+                return;
+            }
+            clear_btn.disabled = false;
+            log.textContent = 'playing stored file: ' + blob.name;
+            const vid = document.querySelector('video');
+            const buf = await blob.arrayBuffer();
+            vid.src = URL.createObjectURL( new Blob( [ buf ] ) );
+            return vid.play();
+        }
+        getFile().catch( err => {
+            log.textContent = "We faced an issue:\n '" +
+                err.message + "'\n" +
+                (err.message.includes( 'storage method') ?
+                'If you are on Firefox, you may have to disable "Tracking Protection" for this site.' : '');
+        });
+
+        clear_btn.onclick = e => {
+            localforage.removeItem('myfile');
+        }
+</script>

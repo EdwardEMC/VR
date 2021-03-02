@@ -286,7 +286,7 @@ export class WebXR {
     this.options_visibility = !this.options_visibility;
   }
 
-  // loading a file from local storage
+  //loading a file from local storage
   localFileVideoPlayer(video) {
     'use strict'
     let URL = window.URL || window.webkitURL
@@ -310,10 +310,7 @@ export class WebXR {
 
       console.log(file);
   
-      //let fileURL = URL.createObjectURL(new Blob([file]));
-
-      let fileURL = await file.arrayBuffer();
-      vid.src = URL.createObjectURL( new Blob( [ fileURL ] ) );
+      let fileURL = URL.createObjectURL(new Blob([file]));
 
       video.src = fileURL;
       

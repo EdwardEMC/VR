@@ -10,13 +10,14 @@ if (QueryArgs.getBool('usePolyfill', true)) {
 }
 
 // home scene video node set up
-const video = document.createElement('video');
-video.setAttribute("id", "video_360_stream");
-video.setAttribute("class", "hide");
-video.style.display = "none";
-video.autoplay = true;
-video.loop = true;
-video.muted = true;
+const video = document.getElementById("video_stream");
+//const video = document.createElement('video');
+//video.setAttribute("id", "video_360_stream");
+// video.setAttribute("class", "hide");
+// video.style.display = "none";
+// video.autoplay = true;
+// video.loop = true;
+// video.muted = true;
 video.src = "assets/media/video/sample.mp4";
 
 // WebXR setup
@@ -31,7 +32,7 @@ let imgOptions = app.createIcon("options-button.png", "options_toggle");
 imgOptions.onclick = function() { app.toggleOptions() };
 
 // Load local video file
-app.localFileVideoPlayer(video);
+//app.localFileVideoPlayer(video);
 
 // Page setup
 let videoSkybox = new VideoSkybox({video: video});
