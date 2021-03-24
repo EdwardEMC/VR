@@ -4,9 +4,10 @@
 
 <script type="module" src="assets/js/webxr/webxr_basic.js"></script>
 <link rel="stylesheet" href="assets/css/XRstyle.css">
-
-<pre id="log"></pre>
-<input type="file" id="f" />
+<input id='input' type='file' accept='video/*'><br>
+<video id='output' style="height:100px; width:100px;">
+{{!-- <pre id="log"></pre>
+<input type="file" id="f" /> --}}
 <br><br>
 <button id="clear_btn" disabled="true">
 clear database
@@ -14,7 +15,7 @@ clear database
 <video style="display: none;" id="video_stream" controls muted autoplay></video>
 <script src="assets/js/jquery/jquery-3.4.1.js"></script>
 <script src="https://cdn.rawgit.com/localForage/localForage/4ce19202/dist/localforage.min.js"></script>
-<script>
+<!--<script>
         const vid = document.querySelector('video');
         f.onchange = store;
 
@@ -54,4 +55,4 @@ clear database
         clear_btn.onclick = e => {
             localforage.removeItem('myfile');
         }
-</script>
+</script>-->

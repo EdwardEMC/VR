@@ -34,6 +34,25 @@ imgOptions.onclick = function() { app.toggleOptions() };
 // Load local video file
 //app.localFileVideoPlayer(video);
 
+document.getElementById("input").addEventListener('change', e => {
+  openFile(e);
+});
+
+let openFile = function(e) {
+  var input = e.target.files;
+  let file = input[0];
+
+  var reader = new FileReader();
+  reader.onload = (function(f) {
+  return function(e) {
+      console.log(this.result);
+      var dataURL = reader.result;
+      video.src = dataURL;
+  };
+  })(file);
+  reader.readAsDataURL(file);
+};
+
 // Page setup
 let videoSkybox = new VideoSkybox({video: video});
 document.body.append(video, imgFull, imgOptions);
